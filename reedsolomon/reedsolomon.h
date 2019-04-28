@@ -1,0 +1,1 @@
+void reedsolomon(unsigned char* data_out, unsigned char* data_in);

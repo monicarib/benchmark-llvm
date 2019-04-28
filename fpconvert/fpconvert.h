@@ -1,0 +1,1 @@
+double fpconvert(float *x, float *y, long length);

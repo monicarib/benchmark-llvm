@@ -1,0 +1,1 @@
+double flops6(long loops, long NLimit);

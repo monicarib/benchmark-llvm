@@ -1,0 +1,1 @@
+int objinst(int argc, char *argv[]);

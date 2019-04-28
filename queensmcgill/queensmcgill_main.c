@@ -1,0 +1,6 @@
+#include "queensmcgill.h"
+
+int main(int argc, char **argv)
+{
+  return queensmcgill( argc, argv);
+}

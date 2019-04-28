@@ -1,0 +1,1 @@
+long * fannkuch( int n );
