@@ -9,6 +9,7 @@
         "string.h": "c",
         "puzzlestanford.h": "c",
         "puzzle.h": "c",
-        "queens.h": "c"
+        "queens.h": "c",
+        "matrix.h": "c"
     }
 }
