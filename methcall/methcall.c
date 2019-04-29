@@ -65,7 +65,7 @@ NthToggle *new_NthToggle(char start_state, int max_count) {
 }
 
 int methcall(int argc, char *argv[]){
-#define LENGTH 5000
+#define LENGTH 3500 //5000
     int i, n = ((argc == 2) ? atoi(argv[1]) : LENGTH);
     Toggle *tog;
     NthToggle *ntog;
