@@ -32,9 +32,11 @@
  P: pressure
 ********************************************************************/
 
-#include <stdio.h>
+//#include <stdio.h>
+//#include <sys/time.h>
 #include <stdlib.h>
-#include <sys/time.h>
+
+#include "himenobmtxpa.h"
 
 #define MR(mt,n,r,c,d)  mt->m[(n) * mt->mrows * mt->mcols * mt->mdeps + (r) * mt->mcols* mt->mdeps + (c) * mt->mdeps + (d)]
 
@@ -46,35 +48,15 @@ struct Mat {
   int mdeps;
 };
 
-/* prototypes */
-typedef struct Mat Matrix;
-
-int newMat(Matrix* Mat, int mnums, int mrows, int mcols, int mdeps);
-void clearMat(Matrix* Mat);
-void set_param(int i[],char *size);
-void mat_set(Matrix* Mat,int l,float z);
-void mat_set_init(Matrix* Mat);
-float jacobi(int n,Matrix* M1,Matrix* M2,Matrix* M3,
-             Matrix* M4,Matrix* M5,Matrix* M6,Matrix* M7);
-double fflop(int,int,int);
-double mflops(int,double,double);
-double second();
-
 float   omega=0.8;
 Matrix  a,b,c,p,bnd,wrk1,wrk2;
 
-float
-himenobmtxpa(int argc, char *argv[])
+float himenobmtxpa(int *msize)
 {
   int    i,j,k,nn;
-  int    imax,jmax,kmax,mimax,mjmax,mkmax,msize[3];
+  int    imax,jmax,kmax,mimax,mjmax,mkmax;
   float  gosa;
   double  cpu0,cpu1,cpu,flop;
-
-  // hardcode to S size
-  msize[0]= 3;
-  msize[1]= 3;
-  msize[2]= 6;
 
   mimax= msize[0];
   mjmax= msize[1];
@@ -137,58 +119,8 @@ himenobmtxpa(int argc, char *argv[])
   return gosa;
 }
 
-double
-fflop(int mx,int my, int mz)
-{
-  return((double)(mz-2)*(double)(my-2)*(double)(mx-2)*34.0);
-}
 
-double
-mflops(int nn,double cpu,double flop)
-{
-  return(flop/cpu*1.e-6*(double)nn);
-}
-
-void
-set_param(int is[],char *size)
-{
-  if(!strcmp(size,"XS") || !strcmp(size,"xs")){
-    is[0]= 32;
-    is[1]= 32;
-    is[2]= 64;
-    return;
-  }
-  if(!strcmp(size,"S") || !strcmp(size,"s")){
-    is[0]= 64;
-    is[1]= 64;
-    is[2]= 128;
-    return;
-  }
-  if(!strcmp(size,"M") || !strcmp(size,"m")){
-    is[0]= 128;
-    is[1]= 128;
-    is[2]= 256;
-    return;
-  }
-  if(!strcmp(size,"L") || !strcmp(size,"l")){
-    is[0]= 256;
-    is[1]= 256;
-    is[2]= 512;
-    return;
-  }
-  if(!strcmp(size,"XL") || !strcmp(size,"xl")){
-    is[0]= 512;
-    is[1]= 512;
-    is[2]= 1024;
-    return;
-  } else {
-    // printf("Invalid input character !!\n");
-    exit(6);
-  }
-}
-
-int
-newMat(Matrix* Mat, int mnums,int mrows, int mcols, int mdeps)
+int newMat(Matrix* Mat, int mnums,int mrows, int mcols, int mdeps)
 {
   Mat->mnums= mnums;
   Mat->mrows= mrows;
@@ -201,8 +133,7 @@ newMat(Matrix* Mat, int mnums,int mrows, int mcols, int mdeps)
   return(Mat->m != NULL) ? 1:0;
 }
 
-void
-clearMat(Matrix* Mat)
+void clearMat(Matrix* Mat)
 {
   if(Mat->m)
     free(Mat->m);
@@ -213,8 +144,7 @@ clearMat(Matrix* Mat)
   Mat->mdeps= 0;
 }
 
-void
-mat_set(Matrix* Mat, int l, float val)
+void mat_set(Matrix* Mat, int l, float val)
 {
   int i,j,k;
 
@@ -224,8 +154,7 @@ mat_set(Matrix* Mat, int l, float val)
           MR(Mat,l,i,j,k)= val;
 }
 
-void
-mat_set_init(Matrix* Mat)
+void mat_set_init(Matrix* Mat)
 {
   int  i,j,k,l;
   float tt;
@@ -237,8 +166,7 @@ mat_set_init(Matrix* Mat)
           /(float)((Mat->mrows - 1)*(Mat->mrows - 1));
 }
 
-float
-jacobi(int nn, Matrix* a,Matrix* b,Matrix* c,
+float jacobi(int nn, Matrix* a,Matrix* b,Matrix* c,
        Matrix* p,Matrix* bnd,Matrix* wrk1,Matrix* wrk2)
 {
   int    i,j,k,n,imax,jmax,kmax;
@@ -285,29 +213,5 @@ jacobi(int nn, Matrix* a,Matrix* b,Matrix* c,
   } /* end n loop */
 
   return(gosa);
-}
-
-double
-second()
-{
-
-  struct timeval tm;
-  double t ;
-
-  static int base_sec = 0,base_usec = 0;
-
-  gettimeofday(&tm, NULL);
-
-  if(base_sec == 0 && base_usec == 0)
-    {
-      base_sec = tm.tv_sec;
-      base_usec = tm.tv_usec;
-      t = 0.0;
-  } else {
-    t = (double) (tm.tv_sec-base_sec) +
-      ((double) (tm.tv_usec-base_usec))/1.0e6 ;
-  }
-
-  return t ;
 }
 
