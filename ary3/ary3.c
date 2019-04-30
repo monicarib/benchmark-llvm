@@ -9,7 +9,7 @@ void ary3(int n, int * result){
 
   for (i = 0; i < n; i++) {
     x[i] = i + 1;
-    y[0]=0;
+    y[i]=0;
   }
 
   for (k=0; k<1000; k++) {
