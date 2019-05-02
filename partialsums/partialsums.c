@@ -7,16 +7,7 @@
 #include<math.h>
 #include<stdio.h>
 #include<stdlib.h>
-
-typedef double v2df __attribute__ ((vector_size (16)));
-
-v2df make_vec(double a, double b)
-{
-    v2df v;
-    double *tmp;
-    tmp = (double *)&v; *(tmp) = a; *(tmp+1) = b;
-    return v;
-}
+#include "partialsums.h"
 
 double sum_vec(v2df x)
 {
@@ -24,20 +15,9 @@ double sum_vec(v2df x)
     return *(tmp) + *(tmp+1);
 }
 
-int* partialsums(){
-        double  twoThrd = 0, sqrts = 0, Flint = 0, Cookson = 0;
-    v2df    Harmonic, zeta, poly, alt, Gregory;
-    v2df    zero, one, two, init, m_one, kv, av;
-
-    double  k, k3, s, c;
-    int n;  n = 250;
-
-    zero  = make_vec( 0.0,  0.0);  one   = make_vec( 1.0,  1.0);
-    two   = make_vec( 2.0,  2.0);  m_one = make_vec(-1.0, -1.0);
-    init  = make_vec( 1.0,  2.0);  av    = make_vec( 1.0, -1.0);
-
-    Harmonic = zeta = poly = alt = Gregory = zero;
-
+int* partialsums(int k, int n, double twoThrd, double sqrts, double Flint, double Cookson, double k3, double s, double c,
+                 v2df Harmonic, v2df zeta, v2df poly, v2df alt, v2df Gregory,
+                 v2df zero, v2df one, v2df two, v2df init, v2df m_one, v2df kv, v2df av){
     for (k=1; k<=n; k++)
     {
         twoThrd += pow(2.0/3.0, k-1);
@@ -57,26 +37,17 @@ int* partialsums(){
         Gregory +=  av /(two*kv - one);
     }
 
-#define psum(name,num) printf("%.9f\t%s\n",num,name)
     int *res = (int*)malloc(sizeof(int)*9);
-    res[1] = psum("(2/3)^k",           twoThrd);
-    res[2] = psum("k^-0.5",      sqrts);
-    res[3] = psum("(2/3)^k",    sum_vec(poly));
-    res[4] = psum("Flint Hills", Flint);
-    res[5] = psum("Cookson Hills",     Cookson);
-    res[6] = psum("Harmonic", sum_vec(Harmonic));
-    res[7] = psum("Riemann Zeta",sum_vec(zeta));
-    res[8] = psum("Alternating Harmonic",sum_vec(alt));
-    res[9] = psum("Gregory",  sum_vec(Gregory));
 
-    // printf("%d %d %d %d %d %d %d %d %d",res1,res2,res3,res4,res5,res6,res7,res8,res9);
-
-    
-    //psum("(2/3)^k",           twoThrd); psum("k^-0.5",      sqrts);
-    //psum("1/k(k+1)",    sum_vec(poly)); psum("Flint Hills", Flint);
-    //psum("Cookson Hills",     Cookson); psum("Harmonic", sum_vec(Harmonic));
-    //psum("Riemann Zeta",sum_vec(zeta)); psum("Alternating Harmonic",sum_vec(alt));
-    //psum("Gregory",  sum_vec(Gregory));
+    res[1] = twoThrd;
+    res[2] = sqrts;
+    res[3] = sum_vec(poly);
+    res[4] = Flint;
+    res[5] = Cookson;
+    res[6] = sum_vec(Harmonic);
+    res[7] = sum_vec(zeta);
+    res[8] = sum_vec(alt);
+    res[9] = sum_vec(Gregory);
 
     return res;
 }
