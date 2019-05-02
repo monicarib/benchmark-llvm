@@ -1,11 +1,11 @@
-#include <time.h>
-#include <string.h>
-#include <stdio.h>
+//#include <time.h>
+//#include <string.h>
+//#include <stdio.h>
 #include <stdlib.h>
-#include <stddef.h>
-#include <stdbool.h>
-#include <memory.h>
-#include <math.h>
+//#include <stddef.h>
+//#include <stdbool.h>
+//#include <memory.h>
+//#include <math.h>
 #include "huffbench.h"
 
 // embedded random number generator; ala Park and Miller
@@ -16,26 +16,27 @@ static const long IQ   = 127773;
 static const long IR   = 2836;
 static const long MASK = 123459876;
 
-typedef unsigned long bits32;
-typedef unsigned char byte;
-
+/*
 #if defined(ACOVEA)
 #if defined(arch_pentium4)
-static const int NUM_LOOPS =        5;
+static const int NUM_LOOPS =   5;
 static const int TEST_SIZE = 100;
 #else
-static const int NUM_LOOPS =        2;
+static const int NUM_LOOPS =   2;
 static const int TEST_SIZE =  50;
 #endif
 #else
 #ifdef SMALL_PROBLEM_SIZE
-static const int NUM_LOOPS =        2;
+static const int NUM_LOOPS =   2;
 static const int TEST_SIZE =  50;
 #else
-static const int NUM_LOOPS = 5;
+static const int NUM_LOOPS =  5;
 static const int TEST_SIZE = 10;
 #endif
 #endif
+*/
+static const int NUM_LOOPS =  5;
+static const int TEST_SIZE = 50;
 
 static size_t random4()
 {
@@ -72,23 +73,9 @@ byte * generate_test_data(size_t n)
     return result;
 }
 
-int main(int argc, char ** argv)
+int main()
 {
     int i;
-    // do we have verbose output?
-    bool ga_testing = false;
-    
-    if (argc > 1)
-    {
-        for (i = 1; i < argc; ++i)
-        {
-            if (!strcmp(argv[1],"-ga"))
-            {
-                ga_testing = true;
-                break;
-            }
-        }
-    }
     
     // initialization
     byte * test_data = generate_test_data(TEST_SIZE);
@@ -112,7 +99,7 @@ int main(int argc, char ** argv)
          
     // calculate run time
     //clock_gettime(CLOCK_REALTIME,&stop);        
-    double run_time = 0; //(stop.tv_sec - start.tv_sec) + (double)(stop.tv_nsec - start.tv_nsec) / 1000000000.0;
+    // double run_time = (stop.tv_sec - start.tv_sec) + (double)(stop.tv_nsec - start.tv_nsec) / 1000000000.0;
 
     /*
     FILE * after = fopen("after","wb");
@@ -129,7 +116,7 @@ int main(int argc, char ** argv)
     // else        
     //     fprintf(stdout,"\nhuffbench (Std. C) run time: %f\n\n",run_time);
     
-    fflush(stdout);
+    //fflush(stdout);
     
     // done
     return 10;

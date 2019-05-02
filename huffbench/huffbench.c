@@ -26,62 +26,15 @@
     singularities.
 */
 
-#include <time.h>
-#include <string.h>
-#include <stdio.h>
+//#include <time.h>
+//#include <string.h>
+//#include <stdio.h>
 #include <stdlib.h>
-#include <stddef.h>
-#include <stdbool.h>
+//#include <stddef.h>
+//#include <stdbool.h>
 #include <memory.h>
-#include <math.h>
-
-// embedded random number generator; ala Park and Miller
-static       long seed = 1325;
-static const long IA   = 16807;
-static const long IM   = 2147483647;
-static const long IQ   = 127773;
-static const long IR   = 2836;
-static const long MASK = 123459876;
-
-// return index between 0 and 3
-static size_t random4()
-{
-    long k;
-    size_t result;
-    
-    seed ^= MASK;
-    k = seed / IQ;
-    seed = IA * (seed - k * IQ) - IR * k;
-    
-    if (seed < 0L)
-        seed += IM;
-    
-    result = (size_t)(seed % 32L);
-    seed ^= MASK;
-    
-    return result;
-}
-
-#if defined(ACOVEA)
-#if defined(arch_pentium4)
-static const int NUM_LOOPS =        5;
-static const int TEST_SIZE = 10000000;
-#else
-static const int NUM_LOOPS =        2;
-static const int TEST_SIZE =  5000000;
-#endif
-#else
-#ifdef SMALL_PROBLEM_SIZE
-static const int NUM_LOOPS =        2;
-static const int TEST_SIZE =  5000000;
-#else
-static const int NUM_LOOPS =       30;
-static const int TEST_SIZE = 10000000;
-#endif
-#endif
-
-typedef unsigned long bits32;
-typedef unsigned char byte;
+//#include <math.h>
+#include "huffbench.h"
 
 // utility function for processing compression trie
 static void heap_adjust(size_t * freq, size_t * heap, int n, int k)
@@ -114,7 +67,7 @@ static void heap_adjust(size_t * freq, size_t * heap, int n, int k)
 }
 
 // Huffman compression/decompression function
-void huffbench(byte * data, size_t data_len)
+int huffbench(byte * data, size_t data_len)
 {
     size_t i, j, n, mask;
     bits32 k, t;
@@ -240,7 +193,7 @@ void huffbench(byte * data, size_t data_len)
     if (maxi > (sizeof(unsigned long) * 8))
     {
         // fprintf(stderr,"error: bit code overflow\n");
-        exit(1);
+        return 1;
     }
 
     // encode data
@@ -253,7 +206,7 @@ void huffbench(byte * data, size_t data_len)
     if (maxx == 0)
     {
         // fprintf(stderr,"error: file has only one value!\n");
-        exit(1);
+        return 1;
     }
 
     for (j = 0; j < data_len; ++j)
@@ -274,7 +227,7 @@ void huffbench(byte * data, size_t data_len)
                 if (comp_len == data_len)
                 {
                     // fprintf(stderr,"error: no compression\n");
-                    exit(1);
+                    return 1;
                 }
             
                 bit  = 0;
@@ -410,6 +363,8 @@ void huffbench(byte * data, size_t data_len)
     
     // remove work areas
     free(comp);
+    
+    return 0;
 }
 
 
