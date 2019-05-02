@@ -1,1 +1,1 @@
-int nestedloop(int argc, char *argv[]);
+int nestedloop(int length);
