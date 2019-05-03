@@ -1,1 +1,1 @@
-float pi(float sum,float addend);
+void pi(float *sum,float *addend);
