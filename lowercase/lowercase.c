@@ -1,9 +1,8 @@
-#include <stdio.h>
+//#include <stdio.h>
 #include <string.h>
+#include "lowercase.h"
 
 void *malloc(size_t);
-
-typedef unsigned short UChar;
 
 static inline UChar toASCIILower(UChar c) { return c | ((c >= 'A' && c <= 'Z') << 5); }
 
@@ -24,12 +23,8 @@ static size_t lower_StringImpl(const UChar* __restrict data, size_t length, UCha
   return 0;
 }
 
-static UChar staticData[]  = {'H', 'E', 'L', 'L', 'O', ' ', 'W', 'O', 'R', 'L', 'D', '!', 'H', 'E', 'L', 'L'};
-static const size_t staticDataLength = sizeof(staticData) / sizeof(staticData[0]);
-
-void lowercase(size_t numberOfIterations)
+UChar * lowercase(size_t numberOfCharacters, UChar *staticData, size_t staticDataLength)
 {
-  const size_t numberOfCharacters = numberOfIterations;
   const size_t testDataLength = ((numberOfCharacters + staticDataLength - 1) / staticDataLength) * staticDataLength;
   UChar* testData = malloc(sizeof(UChar) * testDataLength);
   size_t i;
@@ -37,11 +32,13 @@ void lowercase(size_t numberOfIterations)
     memcpy(testData + i, staticData, staticDataLength * sizeof(staticData[0]));
 
   UChar* result = malloc(sizeof(UChar) * testDataLength);
-  // printf("iterations (%ld characters)\n", numberOfIterations, numberOfCharacters);
+  // printf("iterations (%ld characters)\n", numberOfCharacters);
 
   memset(result, 0, sizeof(UChar) * testDataLength);
-  for (i = 0; i < 100; i++)
+  //for (i = 0; i < 100; i++)
     lower_StringImpl(testData, numberOfCharacters, result);
+    
+  return result;
 }
 
 
