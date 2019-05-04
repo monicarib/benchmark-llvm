@@ -3,10 +3,6 @@
  * http://www.bagley.org/~doug/shootout/
  */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include "matrix.h"
-
 int **mmult(int rows, int cols, int **m1, int **m2, int **m3) {
     int i, j, k, val;
     for (i=0; i<rows; i++) {
@@ -21,12 +17,11 @@ int **mmult(int rows, int cols, int **m1, int **m2, int **m3) {
     return(m3);
 }
 
-int **matrix(int length, int **m1, int **m2, int **mm) {
-    int n = length;
+void matrix(int rows, int cols, int **m1, int **m2, int **mm, int n){
 
-    for (int i=0; i<n; i++) {
-	    mm = mmult(SIZE, SIZE, m1, m2, mm);
+    int i;
+
+    for (i = 0; i < n; i++) {
+	mm = mmult(rows, cols, m1, m2, mm);
     }
-
-    return (mm);
 }
