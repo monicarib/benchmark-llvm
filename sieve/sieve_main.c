@@ -3,9 +3,20 @@
  * http://www.bagley.org/~doug/shootout/
  */
 
+#include <stdio.h>
+#include <stdlib.h>
 #include "sieve.h"
 
-int
-main(int argc, char *argv[]) {
-    return sieve(argc,argv);
+int main(int argc, char *argv[]) {
+
+    int length = 1700;
+ #pragma monitor start
+    int result = sieve(length);
+ #pragma monitor stop
+ 
+    if(result == 46) {
+       return 10;
+    } else {
+        return 1;
+    }
 }

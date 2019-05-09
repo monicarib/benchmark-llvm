@@ -1,1 +1,1 @@
-sieve(int argc, char *argv[]);
+int sieve(int length);
