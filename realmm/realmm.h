@@ -1,1 +1,1 @@
-int realmm (int run);
+float **realmm (float **rma, float **rmb, int rowsize, int run);

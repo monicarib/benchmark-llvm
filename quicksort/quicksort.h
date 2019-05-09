@@ -1,1 +1,1 @@
-int quicksort (int run);
+void quicksort (int srtelements, int *sortlist);

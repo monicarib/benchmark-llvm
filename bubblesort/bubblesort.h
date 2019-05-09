@@ -1,1 +1,1 @@
-int bubblesort(int biggest, int littlest, int srtelements, int *sortlist);
+void bubblesort(int srtelements, int *sortlist);
