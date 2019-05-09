@@ -47,7 +47,9 @@
 */
 
 #include <math.h>
-#include <stdio.h>
+
+#include "reedsolomon.h"
+
 #define mm  8           /* RS code over GF(2**4) - change to suit */
 #define nn  255         /* nn=2**mm -1   length of codeword */
 #define tt  8           /* number of errors that can be corrected */
@@ -56,7 +58,7 @@
 static int pp [mm+1] = { 1, 0, 1, 1, 1, 0, 0, 0, 1} ; /* specify irreducible polynomial coeffts */
 static int alpha_to [nn+1], index_of [nn+1], gg [nn-kk+1] ;
 static int recd [nn], data [kk], bb [nn-kk] ;
-static inited = 0;
+static int inited = 0;
 
 static void generate_gf()
 /* generate GF(2**mm) from the irreducible polynomial p(X) in pp[0]..pp[mm]
