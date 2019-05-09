@@ -1,7 +1,8 @@
 #include "bubblesort.h"
 
-int bubblesort(int biggest, int littlest, int srtelements, int *sortlist) {
-  int i, j, top = srtelements;
+/* Sorts an array using bubblesort */
+void bubblesort(int srtelements, int *sortlist) {
+  int i, j, top = srtelements-1;
   
   while (top > 0) {
     i=0;
@@ -17,9 +18,4 @@ int bubblesort(int biggest, int littlest, int srtelements, int *sortlist) {
     
     top=top-1;
   }
-  
-  if ( (sortlist[0] != littlest) || (sortlist[srtelements] != biggest) )
-    return 0;
-    
-  return 1;
 }
