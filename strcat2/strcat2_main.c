@@ -5,9 +5,19 @@
 
 #include "strcat2.h"
 
-#define STUFF "hello\n"
+int main(int argc, char *argv[]) {
+    int n = 1000;
 
-int
-main(int argc, char *argv[]) {
-    return strcat2();
+#pragma monitor start
+    char * result = strcat2(n);
+#pragma monitor stop
+
+    int c = (int)strlen(result);
+    free(result);
+
+    if (c != 6000){
+        return 1;
+    }
+
+    return 10;
 }
