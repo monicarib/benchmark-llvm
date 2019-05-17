@@ -8,15 +8,18 @@
  * $Id: fannkuch-gcc.code,v 1.51 2008-03-06 02:23:27 igouy-guest Exp $
  */
 
-#include <stdio.h>
 #include <stdlib.h>
+
+#include "fannkuch.h"
+
+#define XCH(x,y)	{ Aint t_mp; t_mp=(x); (x)=(y); (y)=t_mp; }
 
 #define Int	int
 #define Aint	int
 
 long * fannkuch( int n )
 {
-    long *r_c;
+    long *r_c = NULL;
     int next=0;
     Aint*	perm;
     Aint*	perm1;
@@ -33,7 +36,7 @@ long * fannkuch( int n )
     perm  = calloc(n, sizeof(*perm ));
     perm1 = calloc(n, sizeof(*perm1));
     count = calloc(n, sizeof(*count));
-    r_c = (long*) malloc (31*sizeof(long));
+    r_c = (long*) malloc (n*sizeof(long));
 
     for( i=0 ; i<n ; ++i ) perm1[i] = i;	/* initial (trivial) permu */
 
@@ -41,14 +44,11 @@ long * fannkuch( int n )
     for(;;) {
 	if( didpr < 30 ) {
 	    for( i=0 ; i<n ; ++i ) r_c[i] = (long)(1+perm1[i]);
-	    //printf("\n");
 	    ++didpr;
 	}
 	for( ; r!=1 ; --r ) {
 	    count[r-1] = r;
 	}
-
-#define XCH(x,y)	{ Aint t_mp; t_mp=(x); (x)=(y); (y)=t_mp; }
 
 	if( ! (perm1[0]==0 || perm1[n1]==n1) ) {
 	    flips = 0;
