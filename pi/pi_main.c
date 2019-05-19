@@ -1,56 +1,20 @@
 #include "pi.h"
 
-int main(int argc, char *argv[]) {
-   float ztot, yran, ymult, ymod, x, y, z, piValue, prod;
-   long int low, ixran, itot, j, iprod;
+#pragma DATA_ALIGN(x, 8); 
 
-    ztot = 0.0;
-    low = 1;
-    ixran = 1907;
-    yran = 5813.0;
-    ymult = 1307.0;
-    ymod = 5471.0;
-//  itot = 40000000;
-    itot = 400;
+int main() {
 
-#pragma monitor start
-    for(j=1; j<=itot; j++) {
-        
-        iprod = 27611 * ixran;
-        ixran = iprod - 74383*(long int)(iprod/74383);
-        x = (float)ixran / 74383.0;
-        prod = ymult * yran;
-        yran = (prod - ymod*(long int)(prod/ymod));
-        y = yran / ymod;
-        z = x*x + y*y;
-        pi(&ztot,&z);
-        if ( z <= 1.0 ) {
-          low = low + 1;
-        }
-    }
-#pragma monitor stop
+    long int itot = 40000; // 4000000 (small size) or 40000000 (big size)
+    float p;
 
-//    printf(" x = %9.6f    y = %12.2f  low = %8d j = %7d\n",x,y,(int)low,(int)j);
-      piValue = 4.0 * (float)low/(float)itot;
-//    printf("Pi = %9.6f ztot = %12.2f itot = %8d\n",piValue,ztot*0.0,(int)itot);
-      
-    if((int)low-305 >0){
-        return 1;
-    }
-    if(y-0.871321499 > 0.0009){
-        return 2;
-    }
-    if((int)j - 401>0){
-        return 3;
-    }
-    if(piValue - 3.050000 > 0.000000){
-        return 4;
-    }
-    if((int)itot - 400 >0){
-        return 5;
-    }
-    if(x - 0.944409370 > 0.00009){
-        return 6;
+    #pragma monitor start
+    p = pi(itot);
+    #pragma monitor stop
+
+    //printf("Pi = %.6f\n",p);
+
+    if (p-3.128800 > 0.0000009) { // 3.130682 (small size) or 3.131497 (big size)
+       return 1;
     }
 
     return 10;
