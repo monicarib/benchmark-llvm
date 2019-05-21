@@ -1,1 +1,1 @@
-int whetstone();
+int whetstone(long startsec, long LOOP, long loopstart, int II, int JJ, long N1, long N2, long N3, long N4, long N6, long N7, long N8, long N9, long N10, long N11, long X1, long X2, long X3, long X4, long I, long resultado, int continuous, double X, double Y, double Z, long finisec);

@@ -1,1 +1,1 @@
-void pi(float *sum,float *addend);
+float pi(long int itot);
