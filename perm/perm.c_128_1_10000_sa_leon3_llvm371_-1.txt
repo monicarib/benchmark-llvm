@@ -154,7 +154,7 @@ Speedup Over Clang/LLVM Optimization Levels...
 
 Design Space Exploration Execution Stats...
 	Number Of Iterations : 0
-	Exploration Time (in seconds) : 0.001
+	Exploration Time (in seconds) : 0.002
 MASTER WEAVER: Closing all weavers!
  -==================================================-
 		Execution Finished
