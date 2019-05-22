@@ -5,12 +5,12 @@ int main()
 	int i;
 	int result;
 	#pragma monitor start
-	for (i = 0; i < 10; i++) {
+	for (i = 0; i < 3; i++) {
+		result = perm();
 
-            result = perm();
-            if(result == 1){
-                return 1;
-            }
+		if ( result != 43300 ){
+			return 1;
+		}
     }
 	#pragma monitor stop
 	return 10;
