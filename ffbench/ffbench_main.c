@@ -22,7 +22,9 @@ int main()
 	fanum = faedge * faedge;   /* Elements in FFT array */
 	fasize = ((fanum + 1) * 2 * sizeof(Float)); /* FFT array size */
 	nsize[1] = nsize[2] = faedge;
+
 	// printf("oiashdiuahsdiuhasd %d %d %d\n", nsize[0],nsize[1],nsize[2]);
+	
 	nsize[1] = 5;
 	nsize[2] = 5;
 
