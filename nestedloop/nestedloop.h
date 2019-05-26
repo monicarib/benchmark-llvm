@@ -1,1 +1,1 @@
-int nestedloop(int length);
+int nestedloop(int n);
