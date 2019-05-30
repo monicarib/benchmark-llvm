@@ -1,4 +1,4 @@
-#include "simplehash.h"
+#include "hash.h"
 
 int main(int argc, char *argv[]) {
 
