@@ -1,0 +1,272 @@
+ -==================================================-
+  1. Setting up LARA
+ -==================================================-
+Concerning language: C
+XML input files: /opt/lara-tools/larad/larai/resources/
+Output directory: ./
+Path included for import: [/opt/lara-tools/larad/larai/]
+Running on: Linux
+Reading file: dse.lara
+Creating ArrayLiteral
+Parse Successful!
+ -==================================================-
+  2. Organizing Aspects
+ -==================================================-
+     -==================================================-
+    Importing compiler_setup.lara
+     -==================================================-
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+    Importing: Parse Successful!
+    Organizing Imported aspects from compiler_setup.laracompiler_setup.lara
+         -==================================================-
+        Importing compiler_optimlevels.lara
+         -==================================================-
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+        Importing: Parse Successful!
+        Organizing Imported aspects from compiler_optimlevels.laracompiler_optimlevels.lara
+        Organized Imported aspects!
+
+Organized Imported aspects!
+
+     -==================================================-
+    Importing target_config.lara
+     -==================================================-
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+    Importing: Parse Successful!
+    Organizing Imported aspects from target_config.laratarget_config.lara
+    Organized Imported aspects!
+
+     -==================================================-
+    Importing dse_algo.lara
+     -==================================================-
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+    Importing: Parse Successful!
+    Organizing Imported aspects from dse_algo.laradse_algo.lara
+    Organized Imported aspects!
+
+     -==================================================-
+    Importing cleanseq.lara
+     -==================================================-
+    Importing: Parse Successful!
+    Organizing Imported aspects from cleanseq.laracleanseq.lara
+    Organized Imported aspects!
+
+Organized!
+ -==================================================-
+  3. Creating Aspect-IR
+ -==================================================-
+Writing to file: ./dse.xml
+Created!
+ -==================================================-
+  1. Reading Aspect-IR
+ -==================================================-
+Reading file: dse.xml
+ -==================================================-
+  2. Interpreting
+ -==================================================-
+ -==================================================-
+  3. Executing Main Aspect
+ -==================================================-
+Collecting Clang/LLVM Optimization Levels Performance (in µseconds)...
+	-O0: 24095598
+	-O1: 19932768
+	-O2: 12136684
+	-O3: 12136684
+
+Exploring 10000 compiler pass sequences using Graph while considering a maximum of 128 compiler passes per sequence...
+	1 (O)	 : 21051792	 : -gvn -tailcallelim -gvn -dse -tailcallelim -loop-simplify -instcombine -loop-rotate -sroa
+	2 (O)	 : 19699530	 : -instcombine -gvn -loop-rotate -basicaa -sroa -jump-threading -loop-unswitch -sccp
+	3 (O)	 : 12901517	 : -loop-vectorize -strip-dead-prototypes -sroa -slp-vectorizer -inline-cost -strip-dead-prototypes -loop-unswitch -domtree -deadargelim -loop-vectorize -branch-prob -targetlibinfo -sccp -elim-avail-extern -block-freq -correlated-propagation -bdce -mldst-motion -early-cse -loop-idiom -float2int -loop-unroll -domtree -jump-threading -lazy-value-info -loop-unroll -dse -inline -lcssa -functionattrs -loop-deletion -memcpyopt -domtree -loop-unroll -branch-prob -jump-threading -loops -loop-unroll -assumption-cache-tracker -globaldce -globalopt -argpromotion -dse -block-freq -verify -loop-rotate -tailcallelim -lower-expect -elim-avail-extern -early-cse -lower-expect -memdep -slp-vectorizer -deadargelim -instcombine -lcssa -domtree -tbaa -verify -loop-accesses -simplifycfg -strip-dead-prototypes -memcpyopt -memcpyopt -no-aa -verify -instcombine -simplifycfg -elim-avail-extern -bdce -tti -early-cse -loop-simplify -loop-unroll -barrier -licm -domtree -loops -loop-vectorize -basiccg -tti -tbaa -functionattrs -inline-cost -lazy-value-info -scoped-noalias -constmerge -sroa -targetlibinfo -elim-avail-extern -functionattrs -memdep -correlated-propagation -correlated-propagation -early-cse -elim-avail-extern -loop-unroll -adce -targetlibinfo -indvars -loop-idiom -memcpyopt -elim-avail-extern -early-cse -globalopt -basiccg -slp-vectorizer -inline-cost -memcpyopt -loop-unswitch -deadargelim -ipsccp -assumption-cache-tracker -elim-avail-extern -loop-simplify -barrier -loop-rotate -loops -loop-idiom -prune-eh -simplifycfg -loop-idiom -slp-vectorizer -basicaa -deadargelim -no-aa -globaldce -slp-vectorizer
+	4 (O)	 : 12225544	 : -inline -ipsccp -gvn -jump-threading -gvn -instcombine -loop-rotate -loop-idiom -instcombine -gvn -jump-threading -sroa -instcombine -basicaa -simplifycfg -ipsccp -correlated-propagation -licm -gvn
+	5 (X)	 : 13241041	 : -simplifycfg -sroa -functionattrs -early-cse -gvn -loop-unswitch -loop-rotate -instcombine -basicaa -loop-deletion -ipsccp -inline -gvn -instcombine -jump-threading -simplifycfg -dse -bdce -loop-unroll
+	6 (X)	 : 13241041	 : -simplifycfg -sroa -functionattrs -early-cse -gvn -loop-unswitch -loop-rotate -instcombine -basicaa -loop-deletion -ipsccp -inline -gvn -instcombine -jump-threading -simplifycfg -dse -bdce -loop-unroll
+	7 (X)	 : 20009774	 : -reassociate -jump-threading -gvn -reassociate -loop-rotate -basicaa -functionattrs -licm -loop-unswitch -instcombine -gvn -sroa
+	8 (X)	 : 20942738	 : -instcombine -tailcallelim -loop-rotate -sroa
+	9 (X)	 : 12681446	 : -early-cse -loop-rotate -instcombine -sroa -functionattrs -inline -gvn -instcombine -argpromotion -simplifycfg -loop-unroll -jump-threading -loop-deletion -adce -dse -ipsccp -basicaa
+	10 (X)	 : 21392958	 : -basicaa -loop-rotate -gvn -instcombine -dse
+	11 (X)	 : 20551608	 : -loop-rotate -gvn -basicaa -instcombine -licm -jump-threading -loop-simplify -early-cse
+	12 (X)	 : 20169966	 : -sroa -instcombine -loop-rotate -indvars -gvn -dse -basicaa
+	13 (X)	 : 20543856	 : -gvn -basicaa -loop-rotate -licm -indvars -dse -sroa
+	14 (X)	 : 21110306	 : -early-cse -licm -dse -instcombine -loop-rotate -basicaa -sroa -early-cse -dse
+	15 (X)	 : 20859796	 : -early-cse -loop-rotate -sroa -dse -licm -instcombine -basicaa -early-cse
+	16 (X)	 : 20478072	 : -loop-rotate -basicaa -gvn -indvars -sroa -dse
+	17 (X)	 : 20539868	 : -basicaa -early-cse -licm -loop-rotate -licm -early-cse -gvn -instcombine -dse
+	18 (X)	 : 19457584	 : -licm -instcombine -dse -loop-rotate -instcombine -early-cse -basicaa -dse -gvn -ipsccp -sroa -licm
+	19 (X)	 : 20478072	 : -loop-rotate -gvn -indvars -basicaa -sroa
+	20 (X)	 : 20584774	 : -sroa -simplifycfg -loop-rotate -gvn -loop-unswitch -basicaa -gvn
+	21 (X)	 : 13629761	 : -gvn -dse -licm -gvn -basicaa -inline -sroa -loop-rotate -barrier -loop-unswitch -gvn -jump-threading -loop-unswitch -instcombine -jump-threading -gvn -simplifycfg -indvars
+	22 (X)	 : 12745517	 : -inline -gvn -licm -simplifycfg -argpromotion -loop-rotate -sroa -licm -gvn -basicaa -instcombine -indvars -jump-threading
+	23 (X)	 : 13406433	 : -licm -jump-threading -inline -loop-rotate -deadargelim -sroa -loop-unswitch -indvars -correlated-propagation -licm -basicaa
+	24 (X)	 : 13363807	 : -gvn -inline -globaldce -indvars -instcombine -loop-vectorize -early-cse -loop-rotate -basicaa -inline -indvars -gvn -jump-threading -loop-rotate -correlated-propagation -memdep -simplifycfg
+	25 (X)	 : 13913346	 : -early-cse -loop-rotate -instcombine -simplifycfg -gvn -inline -memcpyopt -inline-cost -instcombine -sroa
+	26 (X)	 : 15749214	 : -early-cse -instcombine -licm -simplifycfg -basicaa -gvn -instcombine -loop-rotate -jump-threading -inline -barrier -loop-idiom -loop-deletion -indvars -reassociate -jump-threading -jump-threading -loop-unswitch -indvars -dse -gvn -loop-unroll
+	27 (X)	 : 14466798	 : -gvn -functionattrs -inline -instcombine -basicaa -jump-threading
+	28 (X)	 : 13548484	 : -simplifycfg -licm -instcombine -inline -gvn -sroa -loop-rotate -basicaa -instcombine
+	29 (X)	 : 17529592	 : -loop-rotate -sroa -early-cse -inline -indvars -barrier -loop-unswitch -simplifycfg -loop-unswitch
+	30 (X)	 : 17626612	 : -loop-rotate -sroa -inline
+	31 (X)	 : 20345892	 : -early-cse -loop-rotate -gvn -basicaa -sroa -loop-rotate -simplifycfg -instcombine
+	32 (X)	 : 16648583	 : -licm -instcombine -loop-rotate -sroa -instcombine -gvn -simplifycfg -loop-simplify -early-cse -jump-threading -loop-rotate -basicaa -inline -simplifycfg
+	33 (X)	 : 20932404	 : -gvn -indvars -loop-rotate -instcombine -indvars -loop-deletion -reassociate -basicaa
+	34 (X)	 : 13398911	 : -inline -functionattrs -gvn -instcombine -basicaa -loop-rotate -loop-deletion -loop-unroll -inline -dse -gvn -instcombine -gvn -simplifycfg -instcombine
+	35 (X)	 : 13348567	 : -reassociate -sroa -indvars -gvn -loop-rotate -basicaa -licm -instcombine -gvn -indvars -reassociate -inline -instcombine
+	36 (X)	 : 12536666	 : -simplifycfg -loop-deletion -sroa -loop-rotate -loop-unroll -basicaa -sroa -gvn -inline -ipsccp -globalopt -licm -indvars -sroa
+	37 (X)	 : 21250940	 : -gvn -licm -instcombine -basicaa
+	38 (X)	 : 17432236	 : -instcombine -sroa -simplifycfg -inline -globalopt -reassociate -early-cse -ipsccp
+	39 (X)	 : 14287058	 : -loop-rotate -sroa -loop-unroll -inline -instcombine
+	40 (X)	 : 14204584	 : -inline -sroa -simplifycfg -instcombine -loop-rotate
+	41 (X)	 : 14319949	 : -gvn -basicaa -loop-rotate -inline -indvars -instcombine -loop-idiom -gvn -loop-unroll -gvn -simplifycfg -loop-deletion -instcombine -jump-threading -gvn
+	42 (X)	 : 20919780	 : -reassociate -sroa -gvn -reassociate -instcombine -loop-rotate
+	43 (X)	 : 13303106	 : -instcombine -inline -sroa -indvars -loop-rotate -basicaa -dse -gvn
+	44 (X)	 : 20421368	 : -jump-threading -loop-rotate -licm -gvn -jump-threading -loop-unswitch -sroa -loop-rotate -simplifycfg -reassociate -basicaa -loop-unroll -jump-threading
+	45 (X)	 : 20449218	 : -early-cse -gvn -loop-rotate -sroa -instcombine -basicaa -tailcallelim -gvn
+	46 (X)	 : 21853770	 : -sroa
+	47 (X)	 : 14053810	 : -sroa -inline -basicaa -gvn -licm -loop-rotate -gvn
+	48 (X)	 : 21400342	 : -sroa -jump-threading -tailcallelim -loop-rotate -gvn
+	49 (O)	 : 12025354	 : -early-cse -instcombine -sroa -gvn -instcombine -jump-threading -loop-rotate -gvn -basicaa -loop-unroll -globalopt -indvars -loop-rotate -simplifycfg -inline -mldst-motion -loop-idiom -licm -loop-deletion -sccp
+	50 (X)	 : 13355458	 : -inline -sroa -inline -simplifycfg -instcombine -jump-threading -loop-rotate -argpromotion -gvn -loop-idiom -dse -basicaa -loop-unroll -inline
+	51 (X)	 : 20030838	 : -basicaa -licm -loop-rotate -instcombine -jump-threading -sroa -loop-unroll -gvn -gvn -sroa -instcombine
+	52 (X)	 : 21262054	 : -loop-rotate -sroa -instcombine -loop-idiom -loop-deletion
+	53 (X)	 : 13460750	 : -reassociate -basicaa -instcombine -inline -constmerge -early-cse -reassociate -gvn -instcombine -licm -loop-rotate -early-cse -simplifycfg -gvn -indvars -ipsccp
+	54 (X)	 : 20825068	 : -loop-rotate -instcombine -licm -basicaa -sroa
+	55 (X)	 : 13187902	 : -loop-rotate -reassociate -inline -early-cse -ipsccp -sroa -tailcallelim -loop-unroll -jump-threading -basicaa -inline -licm -constmerge -gvn -jump-threading -reassociate -gvn -jump-threading -dse -licm -loop-rotate
+	56 (X)	 : 13228984	 : -early-cse -basicaa -inline -constmerge -jump-threading -loop-rotate -sroa -tailcallelim -gvn -loop-rotate -inline -instcombine
+	57 (O)	 : 11321813	 : -gvn -ipsccp -loop-unswitch -instcombine -inline -loop-rotate -sroa -indvars -instcombine -licm -loop-deletion -gvn -simplifycfg -basicaa -instcombine -gvn -dse -licm -loop-unroll -loop-deletion
+	BEST SEQUENCE	 : 11321813	 : -gvn -ipsccp -loop-unswitch -instcombine -inline -loop-rotate -sroa -indvars -instcombine -licm -loop-deletion -gvn -simplifycfg -basicaa -instcombine -gvn -dse -licm -loop-unroll -loop-deletion
+
+Cleaning Sequence...
+
+Best Solution Found...
+	Sequence : -gvn -ipsccp -loop-unswitch -instcombine -inline -loop-rotate -sroa -indvars -instcombine -licm -loop-deletion -gvn -simplifycfg -basicaa -instcombine -gvn -dse -licm -loop-unroll -loop-deletion
+	Latency  : 11321813
+
+Speedup Over Clang/LLVM Optimization Levels...
+	Over -O0 : 2.128245538060026
+	Over -O0 [including optim levels] : 2.128245538060026
+	Over -O1 : 1.7605632596122194
+	Over -O1 [including optim levels] : 1.7605632596122194
+	Over -O2 : 1.071973543459868
+	Over -O2 [including optim levels] : 1.071973543459868
+	Over -O3 : 1.071973543459868
+	Over -O3 [including optim levels] : 1.071973543459868
+	Over -OX : 1.071973543459868
+	Over -OX [including optim levels] : 1.071973543459868
+
+Design Space Exploration Execution Stats...
+	Number Of Iterations : 57
+	Exploration Time (in seconds) : 402.163
+MASTER WEAVER: Closing all weavers!
+ -==================================================-
+		Execution Finished
+ -==================================================-
