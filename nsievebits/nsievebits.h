@@ -1,1 +1,1 @@
-int nsievebits(int argc, char **argv);
+int nsievebits();

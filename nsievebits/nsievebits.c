@@ -4,7 +4,6 @@
 ** contributed by Mike Pall
 */
 
-#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -15,28 +14,23 @@ typedef unsigned int bits;
 #define BTEST(p, x)	((p)[(x) / BBITS] & BMASK(x))
 #define BFLIP(p, x)	(p)[(x) / BBITS] ^= BMASK(x)
 
-int nsievebits(int argc, char **argv)
+int nsievebits()
 {
-  unsigned int m, sz = 100 << 12;
+  unsigned int m, sz = 30 << 12;
   bits *primes = (bits *)malloc(BSIZE(sz));
 
   if (!primes) return 1;
-
+  
   for (m = 0; m <= 2; m++) {
     unsigned int i, j, count = 0, n = sz >> m;
     memset(primes, 0xff, BSIZE(n));
-    for (i = 2; i <= n; i++) {
+    for (i = 2; i <= n; i++)
       if (BTEST(primes, i)) {
-        count++;
+	      count++;
         for (j = i + i; j <= n; j += i)
           if (BTEST(primes, j)) BFLIP(primes, j);
       }
-      
-      // printf("Primes up to %8d %8d\n", n, count);
-    }
-      
   }
 
   free(primes);
-  return 10;
 }
