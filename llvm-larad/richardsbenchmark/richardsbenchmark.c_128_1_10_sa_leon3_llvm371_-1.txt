@@ -1,0 +1,171 @@
+ -==================================================-
+  1. Setting up LARA
+ -==================================================-
+Concerning language: C
+XML input files: /opt/lara-tools/larad/larai/resources/
+Output directory: ./
+Path included for import: [/opt/lara-tools/larad/larai/]
+Running on: Linux
+Reading file: dse.lara
+Creating ArrayLiteral
+Parse Successful!
+ -==================================================-
+  2. Organizing Aspects
+ -==================================================-
+     -==================================================-
+    Importing compiler_setup.lara
+     -==================================================-
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+    Importing: Parse Successful!
+    Organizing Imported aspects from compiler_setup.laracompiler_setup.lara
+         -==================================================-
+        Importing compiler_optimlevels.lara
+         -==================================================-
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+        Importing: Parse Successful!
+        Organizing Imported aspects from compiler_optimlevels.laracompiler_optimlevels.lara
+        Organized Imported aspects!
+
+Organized Imported aspects!
+
+     -==================================================-
+    Importing target_config.lara
+     -==================================================-
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+    Importing: Parse Successful!
+    Organizing Imported aspects from target_config.laratarget_config.lara
+    Organized Imported aspects!
+
+     -==================================================-
+    Importing dse_algo.lara
+     -==================================================-
+Creating ArrayLiteral
+    Importing: Parse Successful!
+    Organizing Imported aspects from dse_algo.laradse_algo.lara
+    Organized Imported aspects!
+
+     -==================================================-
+    Importing cleanseq.lara
+     -==================================================-
+    Importing: Parse Successful!
+    Organizing Imported aspects from cleanseq.laracleanseq.lara
+    Organized Imported aspects!
+
+Organized!
+ -==================================================-
+  3. Creating Aspect-IR
+ -==================================================-
+Writing to file: ./dse.xml
+Created!
+ -==================================================-
+  1. Reading Aspect-IR
+ -==================================================-
+Reading file: dse.xml
+ -==================================================-
+  2. Interpreting
+ -==================================================-
+ -==================================================-
+  3. Executing Main Aspect
+ -==================================================-
+Collecting Clang/LLVM Optimization Levels Performance (in µseconds)...
+	-O0: 159483
+	-O1: 123460
+	-O2: 110552
+	-O3: 110552
+
+Tuning Simulated Annealing Paramenters...
+	T_max	: 230085.33320609454
+	T_min	: 0.3463129342868816
+	α 	: 0.2616724361483179
+
+Performing 10 DSE iterations using Simulated Annealing considering a maximum of 128 compiler passes per sequence...
+	1 (O)	 : 159483	 : -globaldce
+	2 (O)	 : 159483	 : -loop-unroll -globaldce
+	3 (O)	 : 159483	 : -ipsccp -loop-unroll -globaldce
+	4 (O)	 : 159483	 : -block-freq -ipsccp -loop-unroll -globaldce
+	5 (O)	 : 159134	 : -block-freq -instcombine -ipsccp -loop-unroll -globaldce
+	6 (O)	 : 159134	 : -block-freq -instcombine -ipsccp -ipsccp -loop-unroll -globaldce
+	7 (O)	 : 159134	 : -block-freq -instcombine -ipsccp -ipsccp -ipsccp -loop-unroll -globaldce
+	8 (O)	 : 159134	 : -block-freq -instcombine -indvars -ipsccp -ipsccp -ipsccp -loop-unroll -globaldce
+	9 (O)	 : 159134	 : -block-freq -instcombine -assumption-cache-tracker -indvars -ipsccp -ipsccp -ipsccp -loop-unroll -globaldce
+	10 (O)	 : 159134	 : -block-freq -instcombine -correlated-propagation -assumption-cache-tracker -indvars -ipsccp -ipsccp -ipsccp -loop-unroll -globaldce
+
+Cleaning Sequence...
+
+Best Solution Found...
+	Sequence : -instcombine
+	Latency  : 159134
+
+Speedup Over Clang/LLVM Optimization Levels...
+	Over -O0 : 1.0021931202634258
+	Over -O0 [including optim levels] : 1.44260619437007
+	Over -O1 : 0.7758241482021441
+	Over -O1 [including optim levels] : 1.116759533974962
+	Over -O2 : 0.6947101185164704
+	Over -O2 [including optim levels] : 1
+	Over -O3 : 0.6947101185164704
+	Over -O3 [including optim levels] : 1
+	Over -OX : 0.6947101185164704
+	Over -OX [including optim levels] : 1
+
+Design Space Exploration Execution Stats...
+	Number Of Iterations : 10
+	Exploration Time (in seconds) : 2.613
+MASTER WEAVER: Closing all weavers!
+ -==================================================-
+		Execution Finished
+ -==================================================-

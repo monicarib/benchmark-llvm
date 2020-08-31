@@ -1,0 +1,136 @@
+ -==================================================-
+  1. Setting up LARA
+ -==================================================-
+Concerning language: C
+XML input files: /opt/lara-tools/larad/larai/resources/
+Output directory: ./
+Path included for import: [/opt/lara-tools/larad/larai/]
+Running on: Linux
+Reading file: dse.lara
+Creating ArrayLiteral
+Parse Successful!
+ -==================================================-
+  2. Organizing Aspects
+ -==================================================-
+     -==================================================-
+    Importing compiler_setup.lara
+     -==================================================-
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+    Importing: Parse Successful!
+    Organizing Imported aspects from compiler_setup.laracompiler_setup.lara
+         -==================================================-
+        Importing compiler_optimlevels.lara
+         -==================================================-
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+        Importing: Parse Successful!
+        Organizing Imported aspects from compiler_optimlevels.laracompiler_optimlevels.lara
+        Organized Imported aspects!
+
+Organized Imported aspects!
+
+     -==================================================-
+    Importing target_config.lara
+     -==================================================-
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+Creating ArrayLiteral
+    Importing: Parse Successful!
+    Organizing Imported aspects from target_config.laratarget_config.lara
+    Organized Imported aspects!
+
+     -==================================================-
+    Importing dse_algo.lara
+     -==================================================-
+Creating ArrayLiteral
+    Importing: Parse Successful!
+    Organizing Imported aspects from dse_algo.laradse_algo.lara
+    Organized Imported aspects!
+
+     -==================================================-
+    Importing cleanseq.lara
+     -==================================================-
+    Importing: Parse Successful!
+    Organizing Imported aspects from cleanseq.laracleanseq.lara
+    Organized Imported aspects!
+
+Organized!
+ -==================================================-
+  3. Creating Aspect-IR
+ -==================================================-
+Writing to file: ./dse.xml
+Created!
+ -==================================================-
+  1. Reading Aspect-IR
+ -==================================================-
+Reading file: dse.xml
+ -==================================================-
+  2. Interpreting
+ -==================================================-
+ -==================================================-
+  3. Executing Main Aspect
+ -==================================================-
+Collecting Clang/LLVM Optimization Levels Performance (in µseconds)...
+	-O0: 1264723
+	-O1: 1158605
+	-O2: 1140082
+	-O3: 1149948
+
+Tuning Simulated Annealing Paramenters...
+	T_max	: 1824609.6001982125
+	T_min	: 2.746311100180632
+	α 	: 0.8745321860486915
+
+Performing 100 DSE iterations using Simulated Annealing considering a maximum of 128 compiler passes per sequence...
+	1 (O)	 : 1325819	 : -indvars
+	2 (O)	 : 1259778	 : -lowerswitch -indvars
+	3 (XO)	 : 1289531	 : -libcall-aa -lowerswitch -indvars
+	4 (XO)	 : 1312786	 : -ipconstprop -libcall-aa -lowerswitch -indvars
+	5 (O)	 : 1280977	 : -ipconstprop -libcall-aa -libcall-aa -lowerswitch -indvars
+	6 (XO)	 : 1350767	 : -ipconstprop -lcssa -libcall-aa -libcall-aa -lowerswitch -indvars
+	7 (O)	 : 1314425	 : -ipconstprop -lcssa -globaldce -libcall-aa -libcall-aa -lowerswitch -indvars
+	8 (O)	 : 1269989	 : -globalsmodref-aa -ipconstprop -lcssa -globaldce -libcall-aa -libcall-aa -lowerswitch -indvars
+	9 (XO)	 : 1333460	 : -globalsmodref-aa -place-safepoints -ipconstprop -lcssa -globaldce -libcall-aa -libcall-aa -lowerswitch -indvars
+	10 (O)	 : 1284274	 : -globalsmodref-aa -place-safepoints -ipconstprop -lcssa -loop-unswitch -globaldce -libcall-aa -libcall-aa -lowerswitch -indvars
+	11 (XO)	 : 1289554	 : -inline-cost -globalsmodref-aa -place-safepoints -ipconstprop -lcssa -loop-unswitch -globaldce -libcall-aa -libcall-aa -lowerswitch -indvars
+	12 (O)	 : 1287986	 : -inline-cost -globalsmodref-aa -place-safepoints -ipconstprop -lcssa -loop-unswitch -loop-unswitch -globaldce -libcall-aa -libcall-aa -lowerswitch -indvars
+	13 (XO)	 : 1297910	 : -inline-cost -dse -globalsmodref-aa -place-safepoints -ipconstprop -lcssa -loop-unswitch -loop-unswitch -globaldce -libcall-aa -libcall-aa -lowerswitch -indvars
+	14 (XO)	 : 1299991	 : -inline-cost -dse -globalsmodref-aa -place-safepoints -ipconstprop -lcssa -loop-unswitch -loop-unswitch -basiccg -globaldce -libcall-aa -libcall-aa -lowerswitch -indvars
+	15 (XO)	 : 1369647	 : -inline-cost -dse -globalsmodref-aa -place-safepoints -ipconstprop -lcssa -loop-unswitch -loop-unswitch -basiccg -globaldce -branch-prob -libcall-aa -libcall-aa -lowerswitch -indvars
